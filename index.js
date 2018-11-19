@@ -15,7 +15,7 @@ restService.use(bodyParser.json());
 
 restService.post("/coverage", function(req, res) {
   
-  console.log(req);
+  console.log(req.body);
   
   var speech =
     req.body.queryResult &&
@@ -24,7 +24,7 @@ restService.post("/coverage", function(req, res) {
       ? req.body.queryResult.parameters.client
       : "Seems like some problem. Speak again.";
   return res.json({
-    displayText: speech,
+    fulfillmentMessages: [{text: { text: [speech]}}],
     source: "webhook-echo-sample"
   });
 });
