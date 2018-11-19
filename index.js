@@ -25,6 +25,7 @@ restService.post("/coverage", function(req, res) {
       : "Seems like some problem. Speak again.";
   return res.json({
     fulfillmentMessages: [{text: { text: [speech]}}],
+    fulfillmentText: speech,
     source: "webhook-echo-sample"
   });
 });
