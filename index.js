@@ -15,13 +15,12 @@ restService.use(bodyParser.json());
 
 restService.post("/coverage", function(req, res) {
   var speech =
-    req.body.result &&
-    req.body.result.parameters &&
-    req.body.result.parameters.client
-      ? req.body.result.parameters.client
+    req.body.queryResult &&
+    req.body.queryResult.parameters &&
+    req.body.queryResult.parameters.client
+      ? req.body.queryResult.parameters.client
       : "Seems like some problem. Speak again.";
   return res.json({
-    speech: speech,
     displayText: speech,
     source: "webhook-echo-sample"
   });
